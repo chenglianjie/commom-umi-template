@@ -85,14 +85,11 @@ request.interceptors.request.use((url: string, options: RequestOptionsInit) => {
 
 /**
  * @url 请求的url
- * @parameter 上传的参数n
+ * @parameter 上传的参数
  */
-interface GetAndPostRuquest {
-  (url: string, parameter?: Record<string, unknown>): Promise<any>;
-}
 
-// 封装的get请求和post请求
-const get: GetAndPostRuquest = async (url, parameter) => {
+// 封装的get,post.put,delete请求
+const get = async (url: string, parameter?: Record<string, unknown>): Promise<any> => {
   try {
     const res = await request(url, { method: 'get', params: parameter });
     return res;
@@ -100,10 +97,25 @@ const get: GetAndPostRuquest = async (url, parameter) => {
     console.error(error);
   }
 };
-
-const post: GetAndPostRuquest = async (url, parameter) => {
+const deletes = async (url: string, parameter?: Record<string, unknown>): Promise<any> => {
+  try {
+    const res = await request(url, { method: 'delete', params: parameter });
+    return res;
+  } catch (error) {
+    console.error(error);
+  }
+};
+const post = async (url: string, parameter?: Record<string, unknown>): Promise<any> => {
   try {
     const res = await request(url, { method: 'post', data: parameter });
+    return res;
+  } catch (error) {
+    console.error(error);
+  }
+};
+const put = async (url: string, parameter?: Record<string, unknown>): Promise<any> => {
+  try {
+    const res = await request(url, { method: 'put', data: parameter });
     return res;
   } catch (error) {
     console.error(error);
@@ -113,4 +125,6 @@ const post: GetAndPostRuquest = async (url, parameter) => {
 export default {
   get,
   post,
+  put,
+  deletes,
 };

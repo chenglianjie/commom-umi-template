@@ -17,6 +17,7 @@ export default defineConfig({
   routes: [{ path: '/', component: 'index' }],
   define: {
     CurrentEnvironment: 'dev',
+    REACT_APP_ENV: process.env.REACT_APP_ENV,
   },
   mfsu: {},
 });
