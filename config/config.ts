@@ -1,4 +1,5 @@
 import { defineConfig } from 'umi';
+import proxy from './proxy';
 export default defineConfig({
   // 设置 node_modules 目录下依赖文件的编译方式。
   //   子配置项包含：
@@ -17,7 +18,9 @@ export default defineConfig({
   routes: [{ path: '/', component: 'index' }],
   define: {
     CurrentEnvironment: 'dev',
-    REACT_APP_ENV: process.env.REACT_APP_ENV,
+    REACT_APP_ENV: process?.env?.REACT_APP_ENV,
   },
   mfsu: {},
+  // 代理
+  proxy: proxy[process?.env?.REACT_APP_ENV || 'dev'],
 });

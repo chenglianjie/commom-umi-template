@@ -51,24 +51,13 @@ const request = extend({
   credentials: 'include', // 默认请求是否带上cookie
 });
 
-// 根据不同的开发环境,配置请求前缀
-interface ApiPrefix {
-  dev: string;
-  test: string;
-  prd: string;
-}
-const apiPreFix: ApiPrefix = {
-  dev: 'http://120.55.193.14:3030/',
-  test: 'http://120.55.193.14:3030/',
-  prd: 'http://120.55.193.14:3030/',
-};
-// request拦截器, 携带token,以及根据环境,配置不同的请求前缀
+// request拦截器, 携带token.
 request.interceptors.request.use((url: string, options: RequestOptionsInit) => {
   // 不携带token的请求数组
   let notCarryTokenArr: string[] = [];
   if (notCarryTokenArr.includes(url)) {
     return {
-      url: `${apiPreFix[CurrentEnvironment]}${url}`,
+      url,
       options,
     };
   }
@@ -78,7 +67,7 @@ request.interceptors.request.use((url: string, options: RequestOptionsInit) => {
     Authorization: `Bearer ${token}`,
   };
   return {
-    url: `${apiPreFix[CurrentEnvironment]}${url}`,
+    url,
     options: { ...options, interceptors: true, headers },
   };
 });

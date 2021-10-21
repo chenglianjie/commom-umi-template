@@ -30,7 +30,7 @@ const IndexModel: TextModelType = {
   effects: {
     *query(action, { call, put }) {
       const getDataTest = async () => {
-        const data = await axios.get('test');
+        const data = await axios.get('/api/test');
         return data;
       };
       let testData = yield call(getDataTest);
