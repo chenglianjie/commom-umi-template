@@ -13,10 +13,10 @@ const IndexPage: React.FC = () => {
   const sendRequest = () => {
     dispatch({ type: 'testModel/query' });
   };
-  console.log('自定义环境变量', process);
+  console.log('自定义环境变量', REACT_APP_ENV);
   return (
     <div>
-      <div>自定义环境变量:{process?.env?.REACT_APP_ENV}</div>
+      <div>自定义环境变量:{REACT_APP_ENV}</div>
       <div>我的名字:{name}</div>
       <div>testData的值:{testData}</div>
       <button onClick={changeName}>点击改变name</button>

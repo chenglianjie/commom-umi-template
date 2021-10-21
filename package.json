@@ -1,9 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "start": "cross-env REACT_APP_ENV=reactAppEnv UMI_ENV=dev umi dev",
-    "start:test": "cross-env UMI_ENV=test umi dev",
-    "start:prd": "cross-env UMI_ENV=prd umi dev",
+    "start": "cross-env FORK_TS_CHECKER=1 REACT_APP_ENV=reactAppEnvDev UMI_ENV=dev umi dev",
+    "start:test": "cross-env REACT_APP_ENV=reactAppEnvTest UMI_ENV=test umi dev",
+    "start:prd": "cross-env REACT_APP_ENV=reactAppEnvPrd UMI_ENV=prd umi dev",
     "build": "cross-env UMI_ENV=dev umi build",
     "build:test": "cross-env UMI_ENV=test umi build",
     "build:prd": "cross-env UMI_ENV=prd umi build",
