@@ -40,3 +40,7 @@ img {
 input {
   outline: none;
 }
+/* 盒子模型统一为怪异盒子模型 */
+div {
+  box-sizing: border-box !important;
+}
